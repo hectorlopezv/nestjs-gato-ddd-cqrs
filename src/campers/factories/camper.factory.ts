@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ObjectId } from 'mongodb';
 import { EntityFactory } from 'src/database/entity.factory';
 import { CamperEntityRepository } from '../db/repository/camper.entity.repository';
-import { Camper } from '../model/camper';
+import { Camper } from '../model-commands/camper';
 
 @Injectable()
 export class CamperFactory implements EntityFactory<Camper> {

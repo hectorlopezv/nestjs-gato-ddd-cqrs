@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ObjectId } from 'mongodb';
 import { EntitySchemaFactory } from 'src/database/entity-schema.factory';
-import { Camper } from '../../model/camper';
+import { Camper } from '../../model-commands/camper';
 
 import { CamperSchema } from '../camper.schema';
 @Injectable()
