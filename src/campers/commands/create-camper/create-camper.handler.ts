@@ -1,6 +1,6 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
-import { CamperFactory } from '../factories/camper.factory';
-
+import { CamperCreatedEvent } from 'src/campers/events/camper-created.event';
+import { CamperFactory } from 'src/campers/factories/camper.factory';
 import { CreateCamperCommand } from './create-camper.commands';
 
 @CommandHandler(CreateCamperCommand)
@@ -17,6 +17,8 @@ export class CreateCamperHandler
     const camper = this.enventPublisher.mergeObjectContext(
       await this.camperFactory.create(name, age, allergies),
     );
+    camper.apply(new CamperCreatedEvent(camper.getId()));
+
     // save all events we made
     camper.commit();
   }

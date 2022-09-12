@@ -1,11 +1,10 @@
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
-import { Camper } from '../model/camper';
 
 import { CamperCreatedEvent } from './camper-created.event';
 
-@EventsHandler(Camper)
+@EventsHandler(CamperCreatedEvent)
 export class CamperCreatedHandler implements IEventHandler<CamperCreatedEvent> {
-  async handle(event: CamperCreatedEvent) {
+  async handle(event: CamperCreatedEvent): Promise<void> {
     //Event on created Camper.
     //Email notification
     const { camperId } = event;
